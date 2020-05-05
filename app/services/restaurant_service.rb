@@ -16,6 +16,12 @@ class Restaurant
   # `raw_post` is already a JSON string
   # so there is no need to encode it as JSON
   def self.push(raw_restaurant)
+    datas = JSON.parse(raw_restaurant)
+    ActionCable.server.broadcast 'datas',
+      name: datas['name'],
+      city: datas['city'],
+      zip_code: datas['zip_code'],
+      street: datas['street']
     $redis.lpush(KEY, raw_restaurant)
     $redis.ltrim(KEY, 0, STORE_LIMIT-1)
   end
