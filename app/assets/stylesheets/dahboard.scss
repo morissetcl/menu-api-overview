@@ -1,0 +1,27 @@
+.dashboard-table {
+  padding: 30px;
+  .large {
+    min-width: 150px;
+  }
+  tbody {
+    font-size: 12px;
+  }
+}
+
+.dishes-table-container {
+  display: flex;
+  flex-direction: row-reverse;
+  table { width: 80%; }
+  .dishes-content {
+    width: 50%;
+  }
+}
+
+.restaurants-table-container {
+  display: flex;
+  margin-bottom: 5%;
+  table { width: 80%; }
+  .restaurants-content {
+    width: 50%;
+  }
+}

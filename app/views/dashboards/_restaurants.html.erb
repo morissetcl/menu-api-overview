@@ -1,0 +1,28 @@
+<div class='restaurants-table-container'>
+  <div class='restaurants-content'>
+    <h2>restaurants</h2>
+  </div>
+  <table class="striped" id='restaurants-table'>
+    <thead>
+      <tr>
+        <th class='large'>Name</th>
+        <th class='large'>Street</th>
+        <th class='large'>City</th>
+        <th>Zipcode</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tbody>
+        <% restaurants.each do |restaurant| %>
+        <tr>
+          <td><%= restaurant['name'] %></td>
+          <td><%= street_formatter(restaurant['street']) %></td>
+          <td><%= restaurant['city'].try(:capitalize) %></td>
+          <td><%= restaurant['zip_code'] %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </tbody>
+  </table>
+</div>

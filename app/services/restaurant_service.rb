@@ -18,6 +18,7 @@ class Restaurant
   def self.push(raw_restaurant)
     datas = JSON.parse(raw_restaurant)
     ActionCable.server.broadcast 'datas',
+      type: 'restaurant',
       name: datas['name'],
       city: datas['city'],
       zip_code: datas['zip_code'],
