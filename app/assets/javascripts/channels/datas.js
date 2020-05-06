@@ -4,12 +4,12 @@ App.messages = App.cable.subscriptions.create('DatasChannel', {
   received: function(data) {
     switch (data.type) {
       case 'restaurant':
-        $('#restaurants-table tr:first').after(this.renderMessageRestaurant(data));
         $('#restaurants-table tr:last').remove();
+        $('#restaurants-table tr:first').after(this.renderMessageRestaurant(data));
         break;
       case 'dish':
-        $('#dish-table tbody tr:first').before(this.renderMessageDish(data));
         $('#dish-table tr:last').remove();
+        $('#dish-table tbody tr:first').before(this.renderMessageDish(data));
         break;
       case 'accounting':
         return $('#messages').append(this.renderMessageAccounting(data));
