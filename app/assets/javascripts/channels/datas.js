@@ -15,7 +15,7 @@ App.messages = App.cable.subscriptions.create('DatasChannel', {
         return $('#messages').append(this.renderMessageAccounting(data));
         break;
       default:
-        console.log(`Sounds like there no data type defined.`);
+        console.log('Sounds like there no data type defined.');
     }
   },
 
