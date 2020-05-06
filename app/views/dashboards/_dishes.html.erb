@@ -1,0 +1,26 @@
+<div class='dishes-table-container'>
+  <div class='dishes-content'>
+    <h2>dishes</h2>
+  </div>
+  <table class="striped" id='dish-table'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th class='large'>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tbody>
+        <% dishes.each do |dish| %>
+          <tr>
+            <td><%= dish['title'] %></td>
+            <td><%= price_formatter(dish['price']) %></td>
+            <td><%= description_formatter(dish['description']) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </tbody>
+  </table>
+</div>

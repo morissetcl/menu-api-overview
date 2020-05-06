@@ -1,56 +1,6 @@
-<div class="limiter">
-  <h3>Statistics</h3>
+<p id='messages'></p>
 
-
-  <div class="container-table100">
-    <div class="wrap-table100">
-      <div class="table100">
-        <table>
-          <thead>
-            <tr class="table100-head">
-              <th class="column1">Name</th>
-              <th class="column3">Street</th>
-              <th class="column2">City</th>
-              <th class="column3">Zip Code</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @restaurants.each do |restaurant| %>
-            <tr>
-              <td class="column1"><%= restaurant['name'] %></td>
-              <td class="column3"><%= restaurant['street'] %></td>
-              <td class="column2"><%= restaurant['city'].upcase %></td>
-              <td class="column3"><%= restaurant['zip_code'] %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="container-table100 dishes">
-    <div class="wrap-table100">
-      <div class="table100">
-        <table>
-          <thead>
-            <tr class="table100-head">
-              <th class="column1">Name</th>
-              <th class="column3">Price</th>
-              <th class="column3">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @dishes.each do |dish| %>
-            <tr>
-              <td class="column1"><%= dish['title'] %></td>
-              <td class="column3"><%= dish['price'] %></td>
-              <td class="column3"><%= dish['description'] %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+<div class="dashboard-table">
+  <%= render partial: "restaurants", locals: { restaurants: @restaurants} %>
+  <%= render partial: "dishes", locals: { dishes: @dishes} %>
 </div>

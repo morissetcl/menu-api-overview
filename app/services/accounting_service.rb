@@ -1,4 +1,4 @@
-class Dish
+class Accounting
   KEY = "dish"
   STORE_LIMIT = 10
 
@@ -15,8 +15,8 @@ class Dish
   # to limit required storage space
   # `raw_post` is already a JSON string
   # so there is no need to encode it as JSON
-  def self.push(raw_dish)
-    $redis.lpush(KEY, raw_dish)
+  def self.push(raw_accounting)
+    $redis.lpush(KEY, raw_accounting)
     $redis.ltrim(KEY, 0, STORE_LIMIT-1)
   end
 end
