@@ -32,7 +32,7 @@ App.messages = App.cable.subscriptions.create('DatasChannel', {
     console.log(data)
     return `<tr>
               <td>${this.parseData(data.name)}</td>
-              <td>$${this.parseData(data.price)}</td>
+              <td>${this.parseData(data.price)}</td>
               <td>${this.parseData(data.description)}</td>
             </tr>`;
   },
@@ -40,7 +40,7 @@ App.messages = App.cable.subscriptions.create('DatasChannel', {
   renderMessageAccounting: function(data) {
     return `<ul>
               <li>${this.parseData(data.name)}</li>
-              <li>$${this.parseData(data.price)}</li>
+              <li>${this.parseData(data.price)}</li>
               <li>${this.parseData(data.description)}</li>
             </ul>`;
   },
