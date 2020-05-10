@@ -17,13 +17,19 @@ class Restaurant
   # so there is no need to encode it as JSON
   def self.push(raw_restaurant)
     datas = JSON.parse(raw_restaurant)
+    broadcast_to_datas(datas)
+    $redis.lpush(KEY, raw_restaurant)
+    $redis.ltrim(KEY, 0, STORE_LIMIT-1)
+  end
+
+  private
+
+  def self.broadcast_to_datas(datas)
     ActionCable.server.broadcast 'datas',
       type: 'restaurant',
       name: datas['name'],
       city: datas['city'],
       zip_code: datas['zip_code'],
       street: datas['street']
-    $redis.lpush(KEY, raw_restaurant)
-    $redis.ltrim(KEY, 0, STORE_LIMIT-1)
   end
 end

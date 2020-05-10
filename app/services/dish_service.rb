@@ -17,12 +17,18 @@ class Dish
   # so there is no need to encode it as JSON
   def self.push(raw_dish)
     datas = JSON.parse(raw_dish)
+    broadcast_to_datas(datas)
+    $redis.lpush(KEY, raw_dish)
+    $redis.ltrim(KEY, 0, STORE_LIMIT-1)
+  end
+
+  private
+
+  def self.broadcast_to_datas(datas)
     ActionCable.server.broadcast 'datas',
-      type: 'dish',
+      type: KEY,
       name: datas['title'],
       price: datas['price'],
       description: datas['description']
-    $redis.lpush(KEY, raw_dish)
-    $redis.ltrim(KEY, 0, STORE_LIMIT-1)
   end
 end
