@@ -1,6 +1,11 @@
 <p id='messages'></p>
 
 <div class="dashboard-table">
+  <div class='accounting-container'>
+    <h2> Dishes: <span id='dish_count'><%= @accountings['dish_count'] %></span></h2>
+    <h2> Restaurants: <span id='restaurant_count'><%= @accountings['restaurant_count'] %></span></h2>
+  </div>
+
   <%= render partial: "restaurants", locals: { restaurants: @restaurants} %>
   <%= render partial: "dishes", locals: { dishes: @dishes} %>
 </div>

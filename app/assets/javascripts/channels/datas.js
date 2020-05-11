@@ -12,7 +12,8 @@ App.messages = App.cable.subscriptions.create('DatasChannel', {
         $('#dish-table tbody tr:first').before(this.renderMessageDish(data));
         break;
       case 'accounting':
-        return $('#messages').append(this.renderMessageAccounting(data));
+        $('#dish_count').text(data.dish_count);
+        $('#restaurant_count').text(data.restaurant_count);
         break;
       default:
         console.log('Sounds like there no data type defined.');
@@ -35,14 +36,6 @@ App.messages = App.cable.subscriptions.create('DatasChannel', {
               <td>${this.parseData(data.price)}</td>
               <td>${this.parseData(data.description)}</td>
             </tr>`;
-  },
-
-  renderMessageAccounting: function(data) {
-    return `<ul>
-              <li>${this.parseData(data.name)}</li>
-              <li>${this.parseData(data.price)}</li>
-              <li>${this.parseData(data.description)}</li>
-            </ul>`;
   },
 
   parseData: function(data) {
