@@ -6,5 +6,6 @@ class DashboardsController < ApplicationController
   def index
     @restaurants = Restaurant.list
     @dishes = Dish.list
+    @accountings = Accounting.list.first
   end
 end

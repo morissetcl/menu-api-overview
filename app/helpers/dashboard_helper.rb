@@ -14,6 +14,6 @@ module DashboardHelper
   def price_formatter(price)
     return '-' if price.nil?
 
-    number_to_currency(price, precision: 0)
+    price
   end
 end
